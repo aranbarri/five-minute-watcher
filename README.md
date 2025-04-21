@@ -1,6 +1,7 @@
-# 🖥️ 10 Minute Checker
+# 🖥️ 10 Minute Linux Live Checker
 
 **10 Minute Checker** is a lightweight, self-hosted system monitoring tool built with Python, Flask, WebSockets, and Chart.js.  
+
 It provides real-time system metrics in a clean web dashboard, updating every second and retaining up to the **last 10 minutes** of data.
 
 ---
