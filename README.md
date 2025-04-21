@@ -72,13 +72,3 @@ _No other system configuration is required._
 - Adjust retention time by changing the `maxPoints` value
 
 ---
-
-## 📃 License
-
-MIT — Free to use and modify.
-
----
-
-## 👤 Author
-
-Built with ❤️ by [Your Name]
