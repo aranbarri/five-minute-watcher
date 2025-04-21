@@ -36,7 +36,7 @@ It provides real-time system metrics in a clean web dashboard, updating every se
 
 2. Start the app:
    ```bash
-   docker compose up -d --build
+   docker compose up -d 
    ```
 
 3. Open your browser at:
