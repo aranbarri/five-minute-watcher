@@ -4,6 +4,9 @@
 
 It provides real-time system metrics in a clean web dashboard, updating every second and retaining up to the **last 10 minutes** of data.
 
+![image](https://github.com/user-attachments/assets/1860ac0f-7c83-497c-8de7-46a8df2e08ea)
+
+
 ---
 
 ## 🚀 Features
@@ -73,3 +76,8 @@ _No other system configuration is required._
 - Adjust retention time by changing the `maxPoints` value
 
 ---
+
+## Screenshots
+
+![image](https://github.com/user-attachments/assets/04c0428c-b2b3-42f3-b3ef-b2c62360ce64)
+
