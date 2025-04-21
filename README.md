@@ -1,10 +1,10 @@
-# 🖥️ 10 Minute Linux Live Watcher
+# 🖥️ 5 Minute Linux Live Watcher
 
-**10 Minute Watcher** is a lightweight, self-hosted system monitoring tool built with Python, Flask, WebSockets, and Chart.js.  
+**5 Minute Watcher** is a lightweight, self-hosted system monitoring tool built with Python, Flask, WebSockets, and Chart.js.  
 
-It provides real-time system metrics in a clean web dashboard, updating every second and retaining up to the **last 10 minutes** of data.
+It provides real-time system metrics in a clean web dashboard, updating every second and retaining up to the **last 5 minutes** of data.
 
-![image](https://github.com/user-attachments/assets/4311fabe-acf7-4423-a7ec-816c3c64ce62)
+![image](https://github.com/user-attachments/assets/722c6b1f-66d3-42bc-b562-bdd31cd1af07)
 
 ---
 
@@ -29,8 +29,8 @@ It provides real-time system metrics in a clean web dashboard, updating every se
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/aranbarri/ten-minute-watcher.git
-   cd ten-minute-watcher
+   git clone https://github.com/aranbarri/five-minute-watcher.git
+   cd five-minute-watcher
    ```
 
 2. Start the app:
@@ -57,7 +57,7 @@ _No other system configuration is required._
 ## 📁 Project Structure
 
 ```
-10-minute-checker/
+five-minute-checker/
 ├── app.py                  # Flask + SocketIO backend
 ├── templates/
 │   └── dashboard.html      # Frontend UI (Chart.js)
