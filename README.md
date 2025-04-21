@@ -78,6 +78,7 @@ _No other system configuration is required._
 ---
 
 ## Screenshots
+![image](https://github.com/user-attachments/assets/c75c38ef-c90c-4db1-bca0-bf6a1998e272)
 
 ![image](https://github.com/user-attachments/assets/04c0428c-b2b3-42f3-b3ef-b2c62360ce64)
 
