@@ -30,8 +30,8 @@ It provides real-time system metrics in a clean web dashboard, updating every se
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-user/10-minute-checker.git
-   cd 10-minute-checker
+   git clone https://github.com/aranbarri/ten-minute-checker.git
+   cd ten-minute-checker
    ```
 
 2. Start the app:
