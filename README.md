@@ -28,3 +28,57 @@ It provides real-time system metrics in a clean web dashboard, updating every se
    ```bash
    git clone https://github.com/your-user/10-minute-checker.git
    cd 10-minute-checker
+   ```
+
+2. Start the app:
+   ```bash
+   docker compose up --build
+   ```
+
+3. Open your browser at:
+   ```
+   http://localhost:5000
+   ```
+
+---
+
+## 🛠 Requirements
+
+- Docker
+- Docker Compose
+
+_No other system configuration is required._
+
+---
+
+## 📁 Project Structure
+
+```
+10-minute-checker/
+├── app.py                  # Flask + SocketIO backend
+├── templates/
+│   └── dashboard.html      # Frontend UI (Chart.js)
+├── requirements.txt        # Python dependencies
+├── Dockerfile              # App image definition
+├── docker-compose.yml      # Full stack setup
+```
+
+---
+
+## 💡 Customization
+
+- Add or remove metrics in `app.py`
+- Modify graph behavior/style in `dashboard.html`
+- Adjust retention time by changing the `maxPoints` value
+
+---
+
+## 📃 License
+
+MIT — Free to use and modify.
+
+---
+
+## 👤 Author
+
+Built with ❤️ by [Your Name]
