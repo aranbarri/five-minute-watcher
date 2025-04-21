@@ -18,7 +18,7 @@ It provides real-time system metrics in a clean web dashboard, updating every se
   - Uptime
   - System load (1m, 5m, 15m)
   - Total running processes
-- 🕒 Retains the **last 10 minutes** of history (600 data points)
+- 🕒 Retains the **last 5 minutes** of history (300 data points)
 - 🖼️ Live values displayed alongside each chart
 - 📊 Modern UI with sidebar navigation
 - 🐳 Fully containerized with Docker & Docker Compose
