@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live System Metrics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    .layout {
+      display: flex;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 220px;
+      background: #2c3e50;
+      color: white;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      margin: 10px 0;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+
+    .main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    h3 {
+      margin-top: 50px;
+    }
+
+    canvas {
+      background: white;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div class="sidebar">
+      <h2>Metrics</h2>
+      <ul>
+        <li><a href="#cpu">CPU Usage</a></li>
+        <li><a href="#cpu_temp">CPU Temperature</a></li>
+        <li><a href="#memory">Memory Usage</a></li>
+        <li><a href="#swap">Swap Usage</a></li>
+        <li><a href="#disk">Disk Usage</a></li>
+        <li><a href="#net_sent">Network Sent</a></li>
+        <li><a href="#net_recv">Network Received</a></li>
+        <li><a href="#uptime">Uptime</a></li>
+        <li><a href="#load1">Load (1m)</a></li>
+        <li><a href="#load5">Load (5m)</a></li>
+        <li><a href="#load15">Load (15m)</a></li>
+        <li><a href="#processes">Process Count</a></li>
+      </ul>
+    </div>
+
+    <div class="main" id="charts"></div>
+  </div>
+
+  <script>
+    const metrics = {
+      cpu: "CPU Usage %",
+      cpu_temp: "CPU Temperature (°C)",
+      memory: "Memory Usage %",
+      swap: "Swap Usage %",
+      disk: "Disk Usage %",
+      net_sent: "Network Sent (bytes)",
+      net_recv: "Network Received (bytes)",
+      uptime: "Uptime (seconds)",
+      load1: "Load Average (1m)",
+      load5: "Load Average (5m)",
+      load15: "Load Average (15m)",
+      processes: "Total Processes"
+    };
+
+    const charts = {};
+    const maxPoints = 600;
+    const container = document.getElementById("charts");
+
+    function createChartCanvas(id, label) {
+      const title = document.createElement("h3");
+      title.id = id;
+      title.textContent = label;
+      container.appendChild(title);
+
+      const wrapper = document.createElement("div");
+      wrapper.style.display = "flex";
+      wrapper.style.alignItems = "center";
+      wrapper.style.marginBottom = "30px";
+
+      const canvas = document.createElement("canvas");
+      canvas.id = "canvas_" + id;
+      canvas.width = 1000;
+      canvas.height = 250;
+
+      const valueLabel = document.createElement("span");
+      valueLabel.id = "value_" + id;
+      valueLabel.style.minWidth = "100px";
+      valueLabel.style.marginLeft = "20px";
+      valueLabel.style.fontSize = "18px";
+      valueLabel.style.fontWeight = "bold";
+      valueLabel.textContent = "--";
+
+      wrapper.appendChild(canvas);
+      wrapper.appendChild(valueLabel);
+      container.appendChild(wrapper);
+
+      const ctx = canvas.getContext("2d");
+      charts[id] = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: [],
+          datasets: [{
+            label: label,
+            data: [],
+            borderColor: "#" + Math.floor(Math.random() * 16777215).toString(16),
+            fill: false
+          }]
+        },
+        options: {
+          animation: false,
+          responsive: false,
+          maintainAspectRatio: false,
+          scales: {
+            y: { beginAtZero: true }
+          }
+        }
+      });
+    }
+
+    for (const key in metrics) {
+      createChartCanvas(key, metrics[key]);
+    }
+
+    const socket = io();
+    socket.on("metrics", (data) => {
+      const now = new Date().toLocaleTimeString();
+
+      for (const key in data) {
+        const chart = charts[key];
+        if (!chart) continue;
+
+        const labels = chart.data.labels;
+        const dataset = chart.data.datasets[0].data;
+
+        if (labels.length >= maxPoints) {
+          labels.shift();
+          dataset.shift();
+        }
+
+        labels.push(now);
+        dataset.push(data[key]);
+
+        chart.update();
+
+        const valueEl = document.getElementById("value_" + key);
+        if (valueEl) {
+          valueEl.textContent = data[key];
+        }
+      }
+    });
+  </script>
+</body>
+</html>
