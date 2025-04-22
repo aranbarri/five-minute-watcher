@@ -65,7 +65,7 @@ _No other system configuration is required._
 
 ```
 five-minute-checker/
-├── app.py                  # Flask + SocketIO backend
+├── watcher.py              # Flask + SocketIO backend
 ├── templates/
 │   └── dashboard.html      # Frontend UI (Chart.js)
 ├── requirements.txt        # Python dependencies
@@ -77,7 +77,7 @@ five-minute-checker/
 
 ## 💡 Customization
 
-- Add or remove metrics in `app.py`
+- Add or remove metrics in `watcher.py`
 - Modify graph behavior/style in `dashboard.html`
 - Adjust retention time by changing the `maxPoints` value
 
