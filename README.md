@@ -24,7 +24,7 @@ It provides real-time system metrics (*CPU, memory, disk, etc.*) in a clean web 
 - 🕒 Retains the **last 5 minutes** of history (300 data points)
 - 🖼️ Live values displayed alongside each chart
 - 📊 Easy to use UI 
-- 🐳 Fully containerized with Docker & Docker Compose
+- 🐳 Fully containerized 
 
 ---
 
