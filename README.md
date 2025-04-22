@@ -5,8 +5,8 @@
 It provides real-time system metrics in a clean web dashboard, updating every second and retaining up to the **last 5 minutes** of data.
 
 ![image](https://github.com/user-attachments/assets/722c6b1f-66d3-42bc-b562-bdd31cd1af07)
-*http://localhost:5000*
-*http://<<machine-ip>>:5000*
+*http://localhost:5000* || 
+*http://machine-ip:5000*
 
 ---
 
